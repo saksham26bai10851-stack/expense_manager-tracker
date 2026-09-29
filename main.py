@@ -1,34 +1,140 @@
-from expense_manager import ExpenseManager
+expenses = []
+books = {}
+count = 0
+
+def add():
+    global count
+
+    name = input("Enter expense: ")
+    cat = input("Enter category: ")
+    amt = int(input("Enter amount: "))
+    date = input("Enter date: ")
+
+    count += 1
+
+    books[count] = (count, name, cat, amt, date)
+    expenses.append(amt)
+
+    print("Expense added.")
+    print("Expense ID:", count)
 
 
-manager = ExpenseManager()
+def show():
+    if len(books) == 0:
+        print("No expenses.")
+        return
+
+    print("\n===== EXPENSES =====")
+
+    for n in books:
+        x = books[n]
+
+        print("ID:", x[0])
+        print("Expense:", x[1])
+        print("Category:", x[2])
+        print("Amount: Rs.", x[3])
+        print("Date:", x[4])
+        print()
 
 
-def test_add_expense():
+def search():
+    if len(books) == 0:
+        print("No expenses.")
+        return
 
-    expense_id = manager.add_expense(
-        "Food",
-        "Food",
-        150,
-        "29-09-2026"
-    )
+    n = int(input("Enter expense ID: "))
 
-    assert expense_id == 1
+    if n in books:
+        x = books[n]
 
-
-def test_search_expense():
-
-    expense = manager.search_expense(1)
-
-    assert expense is not None
-    assert expense["amount"] == 150
-
-
-def test_delete_expense():
-
-    result = manager.delete_expense(1)
-
-    assert result == True
+        print("\nExpense found")
+        print("ID:", x[0])
+        print("Expense:", x[1])
+        print("Category:", x[2])
+        print("Amount: Rs.", x[3])
+        print("Date:", x[4])
+    else:
+        print("Expense not found.")
 
 
-print("All tests completed successfully.")
+def delete():
+    if len(books) == 0:
+        print("No expenses.")
+        return
+
+    n = int(input("Enter expense ID: "))
+
+    if n in books:
+        x = books[n]
+
+        expenses.remove(x[3])
+        del books[n]
+
+        print("Expense deleted.")
+    else:
+        print("Expense not found.")
+
+
+def report():
+    if len(expenses) == 0:
+        print("No expenses.")
+        return
+
+    total = 0
+
+    for x in expenses:
+        total = total + x
+
+    high = expenses[0]
+    low = expenses[0]
+
+    for x in expenses:
+        if x > high:
+            high = x
+
+        if x < low:
+            low = x
+
+    print("\n===== REPORT =====")
+    print("Total expenses:", len(expenses))
+    print("Total amount: Rs.", total)
+    print("Highest expense: Rs.", high)
+    print("Lowest expense: Rs.", low)
+
+
+def main():
+    while True:
+        print("\n===== EXPENSE MANAGER =====")
+        print("1. Add Expense")
+        print("2. Show Expenses")
+        print("3. Search Expense")
+        print("4. Delete Expense")
+        print("5. Expense Report")
+        print("6. Exit")
+
+        n = int(input("Enter choice: "))
+
+        if n == 1:
+            add()
+
+        elif n == 2:
+            show()
+
+        elif n == 3:
+            search()
+
+        elif n == 4:
+            delete()
+
+        elif n == 5:
+            report()
+
+        elif n == 6:
+            print("Thank you!")
+            break
+
+        else:
+            print("Wrong choice.")
+
+
+main()
