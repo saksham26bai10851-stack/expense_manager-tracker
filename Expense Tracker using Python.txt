@@ -1,0 +1,81 @@
+# Expense Tracker using Python
+
+## Overview
+
+Expense Tracker is a command-line Python application that helps users manage their daily expenses.
+
+The application allows users to add, view, search, and delete expenses. It also provides a simple report showing total expenses, highest expense, and lowest expense.
+
+Expense data is stored locally in a JSON file.
+
+## Features
+
+* Add a new expense
+* View all expenses
+* Search expense by ID
+* Delete an expense
+* Generate expense report
+* Input validation
+* Error handling
+* JSON-based data storage
+
+## Technologies Used
+
+* Python 3
+* JSON
+* VS Code
+* Git and GitHub
+* Python Standard Library
+
+## Project Structure
+
+```text
+Expense_Tracker/
+│
+├── main.py
+├── expense_manager.py
+├── validation.py
+├── storage.py
+├── report.py
+├── utils.py
+│
+├── data/
+│   └── expenses.json
+│
+├── tests/
+│   └── test_expense.py
+│
+├── README.md
+├── statement.md
+├── REPORT_TEMPLATE.md
+├── requirements.txt
+└── .gitignore
+```
+
+## Requirements
+
+* Python 3.8 or above
+* VS Code or any Python-compatible editor
+* Git (optional, for GitHub submission)
+
+No external Python packages are required.
+
+## How to Run
+
+### 1. Download or Clone the Repository
+
+Clone the repository using:
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+Or download the project as a ZIP file and extract it.
+
+### 2. Open the Project
+
+Open the `Expense_Tracker` folder in VS Code.
+
+### 3. Open Terminal
+
+In VS C
